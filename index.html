@@ -978,24 +978,36 @@
   .contacto__head .section-title { font-size: clamp(34px, 4.5vw, 60px); }
   .contacto__methods {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 0;
     border-top: 1px solid var(--hairline);
     border-bottom: 1px solid var(--hairline);
-    max-width: 720px;
+    max-width: 1100px;
     margin: 0 auto;
   }
   .contacto__method {
-    padding: clamp(28px, 4vw, 40px) clamp(16px, 2.5vw, 28px);
+    padding: clamp(28px, 4vw, 40px) clamp(12px, 1.8vw, 22px);
     text-align: center;
     border-right: 1px solid var(--hairline-soft);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    gap: 10px;
     transition: background .25s ease;
   }
   .contacto__method:last-child { border-right: none; }
   .contacto__method:hover { background: var(--ivory); }
+  .contacto__method-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--clay);
+    transition: color .25s ease, transform .25s ease;
+    margin-bottom: 4px;
+  }
+  .contacto__method:hover .contacto__method-icon {
+    color: var(--rust);
+    transform: translateY(-1px);
+  }
   .contacto__method-label {
     font-family: var(--f-mono);
     font-size: 11px;
@@ -1006,11 +1018,12 @@
   .contacto__method-value {
     font-family: var(--f-display);
     font-weight: 400;
-    font-size: clamp(20px, 2vw, 26px);
+    font-size: clamp(15px, 1.4vw, 19px);
     color: var(--earth);
     font-variation-settings: "opsz" 36, "SOFT" 40;
     letter-spacing: -0.005em;
     transition: color .2s ease;
+    word-break: break-word;
   }
   .contacto__method:hover .contacto__method-value { color: var(--rust); }
   .contacto__method-value em { font-style: italic; font-weight: 300; color: var(--clay); }
@@ -1081,9 +1094,10 @@
     .historia__media,
     .servicios__media { max-width: 480px; }
     .progress__bars { gap: 2px; }
-    .contacto__methods { grid-template-columns: 1fr; }
-    .contacto__method { border-right: none; border-bottom: 1px solid var(--hairline-soft); }
-    .contacto__method:last-child { border-bottom: none; }
+    .contacto__methods { grid-template-columns: repeat(2, 1fr); }
+    .contacto__method { border-right: 1px solid var(--hairline-soft); border-bottom: 1px solid var(--hairline-soft); }
+    .contacto__method:nth-child(2n) { border-right: none; }
+    .contacto__method:nth-last-child(-n+2) { border-bottom: none; }
     .foot__main { grid-template-columns: 1fr; text-align: center; gap: 18px; }
     .foot__center, .foot__ig, .foot__name { justify-self: center; }
   }
@@ -1104,6 +1118,10 @@
     }
     .servicios__list li { grid-template-columns: 48px 1fr; gap: 16px; }
     .porque__body p { font-size: 19px; }
+    .contacto__methods { grid-template-columns: 1fr; }
+    .contacto__method { border-right: none; border-bottom: 1px solid var(--hairline-soft); }
+    .contacto__method:nth-child(2n) { border-right: none; }
+    .contacto__method:last-child { border-bottom: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1423,11 +1441,37 @@
       <h2 class="section-title">Sigamos el <em>camino</em></h2>
     </div>
     <div class="contacto__methods reveal">
-      <a class="contacto__method" href="https://www.instagram.com/lucas.orellanap" target="_blank" rel="noopener">
+      <a class="contacto__method" href="https://www.instagram.com/lucas.orellanap" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg class="contacto__method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/>
+        </svg>
         <span class="contacto__method-label">Instagram</span>
         <span class="contacto__method-value"><em>@</em>lucas.orellanap</span>
       </a>
-            <a class="contacto__method" href="mailto:Lucas.orellana1993@gmail.com">
+
+      <a class="contacto__method" href="https://www.tiktok.com/@lucasmotoviajero" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg class="contacto__method-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M19.321 5.562a5.124 5.124 0 0 1-3.414-4.107L15.81 1h-3.65v14.6c0 1.473-1.198 2.672-2.672 2.672a2.674 2.674 0 0 1-2.672-2.672 2.674 2.674 0 0 1 2.672-2.672c.272 0 .534.041.78.117V9.348a6.318 6.318 0 0 0-.78-.05A6.327 6.327 0 0 0 3.16 15.6 6.327 6.327 0 0 0 9.488 21.929 6.327 6.327 0 0 0 15.81 15.6V8.687a8.776 8.776 0 0 0 5.13 1.65V6.687a5.137 5.137 0 0 1-1.619-1.125z"/>
+        </svg>
+        <span class="contacto__method-label">TikTok</span>
+        <span class="contacto__method-value"><em>@</em>lucasmotoviajero</span>
+      </a>
+
+      <a class="contacto__method" href="https://www.facebook.com/lucas.orellana.929197" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg class="contacto__method-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M13.5 21.5v-8h2.7l.4-3.2h-3.1V8.3c0-.9.3-1.6 1.6-1.6h1.7V3.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.5v3.2h2.6v8h3.4z"/>
+        </svg>
+        <span class="contacto__method-label">Facebook</span>
+        <span class="contacto__method-value">Lucas Orellana</span>
+      </a>
+
+      <a class="contacto__method" href="mailto:Lucas.orellana1993@gmail.com" aria-label="Correo electrónico">
+        <svg class="contacto__method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="M3 7l9 6 9-6"/>
+        </svg>
         <span class="contacto__method-label">Correo electrónico</span>
         <span class="contacto__method-value"><em>Lucas.orellana1993@gmail.com</em></span>
       </a>
